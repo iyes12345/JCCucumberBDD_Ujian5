@@ -1,6 +1,7 @@
 package com.juaracoding.cucumber.pages;
 
 import com.juaracoding.cucumber.drivers.DriverSingleton;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,43 +15,64 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(name = "username")
-    WebElement username;
+    int detik = 1;
 
-    @FindBy(name = "password")
-    WebElement password;
+    @FindBy(xpath = "/html/body/p/a")
+    WebElement clickdismiss;
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")
+    @FindBy(xpath = "//a[normalize-space()='My Account']")
+    WebElement linkmyaccount;
+
+    @FindBy(xpath = "//input[@id='username']")
+    WebElement usernameLogin;
+
+    @FindBy(xpath = "//input[@id='password']")
+    WebElement usernamePassword;
+
+    @FindBy(xpath = "//*[@id=\"customer_login\"]/div[1]/form/p[2]/span/span")
+    WebElement showPassword;
+
+
+    @FindBy(xpath = "//*[@id=\"customer_login\"]/div[1]/form/p[3]/button")
     WebElement btnLogin;
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[1]/div[1]/h5")
-    WebElement txtEmployeeInformation;
-
-    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")
-    WebElement txtInvalidCredentials;
-
-    @FindBy(xpath = "//div[@class='orangehrm-login-slot-wrapper']//div[1]//div[1]//span[1]")
-    WebElement txtRequired;
-
-    public void login(String username, String password){
-        this.username.sendKeys(username);
-        this.password.sendKeys(password);
+    public void loginPageDismiss() {
+        clickdismiss.click();
     }
 
-    public void clickBtnLogin(){
+    public void loginPageMyaccount() {
+        linkmyaccount.click();
+    }
+
+    public void loginForm(String email, String password) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("window.scrollBy(0,500)");
+        delay(detik);
+        this.usernameLogin.sendKeys(email);
+        delay(detik);
+        this.usernamePassword.sendKeys(password);
+        delay(detik);
+        showPassword.click();
+        delay(detik);
         btnLogin.click();
+        delay(detik);
     }
 
-    public String getTxtEmployeeInformation(){
-        return txtEmployeeInformation.getText();
+    public void clickBtnLogin() {
+        delay(detik);
+        btnLogin.click();
+        delay(detik);
     }
 
-    public String getTxtInvalidCredentials(){
-        return txtInvalidCredentials.getText();
-    }
+    static void delay(int detik) {
 
-    public String getTxtRequired(){
-        return txtRequired.getText();
-    }
 
+        try {
+            Thread.sleep(1000 * detik);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

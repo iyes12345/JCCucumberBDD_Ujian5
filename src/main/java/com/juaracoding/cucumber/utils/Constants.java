@@ -7,11 +7,11 @@ public class Constants {
 
     public static final String CHROMEHEADLESS = "ChromeHeadless";
 
-   public static final String URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
+   /*public static final String URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";*/
 
     //public static final String URL = "https://dev.ptdika.com/siloam/panel/login/";
 
-    /*public static final String URL = "https://shop.demoqa.com/";*/
+    public static final String URL = "https://shop.demoqa.com/";
 
     public static final int DETIK = 1;
 }
