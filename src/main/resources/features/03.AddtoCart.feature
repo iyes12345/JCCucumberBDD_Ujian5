@@ -5,5 +5,4 @@ Feature: AddtoCart Product
     And User choose product dress color
     And User choose product dress size
     And User click button add to cart on dress product
-    And User click icon cart for dress view
     Then User click icon cart for dress view

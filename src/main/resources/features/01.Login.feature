@@ -5,4 +5,3 @@ Feature: Login User
     And User click button dismiss
     And User click button my account
     And User enter email password valid
-    Then User click button login valid

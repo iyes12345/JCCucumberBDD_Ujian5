@@ -46,9 +46,9 @@ public class TestLogin {
         extentTest.log(LogStatus.PASS, "User enter email password valid");
     }
 
-    @Then("User click button login valid")
+    /*@Then("User click button login valid")
     public void user_click_button_login_valid() {
         login.clickBtnLogin();
-        extentTest.log(LogStatus.PASS, "User click button login valid");
+        extentTest.log(LogStatus.PASS, "User click button login valid");*/
     }
-}
+
